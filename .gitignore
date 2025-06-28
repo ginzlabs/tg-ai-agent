@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environments
+.env
+.env.prod
+.env.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+myenv/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+temp/
+.temp/
+tmp/
+
+# Docker
+.docker/
+
+# Database
+*.sqlite3
+*.db
+# *.sql
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Telegram API data
+telegram-api-data/
+
+# Local development config
+docker-compose.override.yml
+win_tabs_launch_log.txt
+win_tabs_config.json
+win_launch_tabs.ps1
+ngrok.yml
+
+# Backup files
+*~
+*.bak
+*.bkp 

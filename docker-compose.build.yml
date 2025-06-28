@@ -1,0 +1,12 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: tg-agent-backend:latest
+
+  bot:
+    build:
+      context: .
+      dockerfile: bot/Dockerfile
+    image: tg-agent-bot:latest 

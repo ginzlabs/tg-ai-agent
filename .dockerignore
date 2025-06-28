@@ -1,0 +1,44 @@
+# Version control
+.git
+.gitignore
+.github
+
+# Development environments
+.vscode
+.idea
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env.local
+.env.prod
+.env.dev
+env/
+venv/
+myenv/
+ENV/
+
+# Docker files
+.dockerignore
+docker-compose.yml
+docker-compose.override.yml
+**/Dockerfile
+
+# Logs
+logs/
+*.log
+
+# Documentation
+*.md
+!README.md
+
+# Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.swp
+*.swo
+*~ 

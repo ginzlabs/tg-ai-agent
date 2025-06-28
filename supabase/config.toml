@@ -1,0 +1,149 @@
+project_id = "tg-agent"
+
+# -------------------- API Config --------------------
+[api]
+enabled = true
+port = 55001  # Exposed API endpoint port (was 54321)
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[api.tls]
+enabled = false
+
+# -------------------- Database Config --------------------
+[db]
+port = 55002  # PostgreSQL main port (was 54322)
+shadow_port = 55003  # Used during migrations (was 54320)
+major_version = 15
+
+[db.pooler]
+enabled = false
+port = 55006  # Connection pooler port (was 54329)
+pool_mode = "transaction"
+default_pool_size = 20
+max_client_conn = 100
+
+[db.migrations]
+schema_paths = []
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+# -------------------- Realtime Engine --------------------
+[realtime]
+enabled = true
+
+# -------------------- Supabase Studio --------------------
+[studio]
+enabled = true
+port = 55004  # Supabase Studio dashboard (was 54323)
+api_url = "http://127.0.0.1"
+openai_api_key = "env(OPENAI_API_KEY)"
+
+# -------------------- Inbucket Email Testing --------------------
+[inbucket]
+enabled = true
+port = 55005  # Web UI for viewing test emails (was 54324)
+
+# -------------------- File Storage --------------------
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+# -------------------- Authentication --------------------
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = ["https://127.0.0.1:3000"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+enable_anonymous_sign_ins = false
+enable_manual_linking = false
+minimum_password_length = 6
+password_requirements = ""
+
+[auth.rate_limit]
+email_sent = 2
+sms_sent = 30
+anonymous_users = 30
+token_refresh = 150
+sign_in_sign_ups = 30
+token_verifications = 30
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+secure_password_change = false
+max_frequency = "1s"
+otp_length = 6
+otp_expiry = 3600
+
+[auth.sms]
+enable_signup = false
+enable_confirmations = false
+template = "Your code is {{ .Code }}"
+max_frequency = "5s"
+
+[auth.sms.twilio]
+enabled = false
+account_sid = ""
+auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
+
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = false
+verify_enabled = false
+
+[auth.mfa.phone]
+enroll_enabled = false
+verify_enabled = false
+otp_length = 6
+template = "Your code is {{ .Code }}"
+max_frequency = "5s"
+
+[auth.external.apple]
+enabled = false
+client_id = ""
+secret = "env(SUPABASE_AUTH_EXTERNAL_APPLE_SECRET)"
+redirect_uri = ""
+url = ""
+skip_nonce_check = false
+
+[auth.third_party.firebase]
+enabled = false
+
+[auth.third_party.auth0]
+enabled = false
+
+[auth.third_party.aws_cognito]
+enabled = false
+
+[auth.third_party.clerk]
+enabled = false
+
+# -------------------- Edge Functions Runtime --------------------
+[edge_runtime]
+enabled = true
+policy = "oneshot"
+inspector_port = 55008  # Was 8083
+
+# -------------------- Analytics (Optional) --------------------
+[analytics]
+enabled = false
+port = 55007  # Was 54327
+backend = "postgres"
+
+# -------------------- Experimental --------------------
+[experimental]
+orioledb_version = ""
+s3_host = "env(S3_HOST)"
+s3_region = "env(S3_REGION)"
+s3_access_key = "env(S3_ACCESS_KEY)"
+s3_secret_key = "env(S3_SECRET_KEY)"
